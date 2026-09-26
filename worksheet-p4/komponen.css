@@ -1,0 +1,82 @@
+/* E.1 Tampilan Tabel Katalog Film */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-2);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+}
+
+th, td {
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  font-size: var(--text-sm);
+}
+
+th {
+  background-color: var(--color-bg);
+  font-weight: 600;
+}
+
+/* E.2 Tampilan Form dan Isian (Input) */
+form {
+  background-color: var(--color-surface);
+  padding: var(--card-pad);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-1);
+}
+
+form p {
+  margin-bottom: var(--space-4);
+}
+
+label {
+  display: inline-block;
+  margin-bottom: var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-md);
+  background-color: var(--color-surface);
+  color: var(--color-fg);
+}
+
+/* E.3 Keadaan Fokus (Focus State) yang Jelas & Kontras untuk Aksesibilitas */
+input:focus, button:focus {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-color: var(--color-focus);
+}
+
+/* Keadaan Tidak Valid (Invalid State) */
+input:user-invalid {
+  border-color: var(--color-danger);
+}
+
+/* E.4 Tombol Aksi (Button) */
+button[type="submit"] {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  padding: var(--space-2) var(--space-4);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--text-md);
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  opacity: 0.9;
+}
