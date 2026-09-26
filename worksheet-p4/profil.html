@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Film Favorit Saya</title>
+</head>
+<body>
+
+    <header>
+        <h1>Daftar Film Favorit Saya</h1>
+        <nav aria-label="Navigasi utama">
+            <ul>
+                <li><a href="#daftar-film">Daftar Film</a></li>
+                <li><a href="#tambah-film">Tambah Film</a></li>
+                <li><a href="#tentang-saya">Tentang Saya</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="daftar-film">
+            <h2>Daftar Film</h2>
+            
+            <table>
+                <caption>Daftar Film yang Pernah Saya Tonton</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Poster</th>
+                        <th scope="col">Judul</th>
+                        <th scope="col">Tahun</th>
+                        <th scope="col">Sutradara</th>
+                        <th scope="col">Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="images/lotr-1.webp" alt="Poster LOTR 1" width="60"></td>
+                        <td>The Lord of the Rings: The Fellowship of the Ring</td>
+                        <td>2001</td>
+                        <td>Peter Jackson</td>
+                        <td>9.5/10</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/lotr-2.webp" alt="Poster LOTR 2" width="60"></td>
+                        <td>The Lord of the Rings: The Two Towers</td>
+                        <td>2002</td>
+                        <td>Peter Jackson</td>
+                        <td>9.5/10</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/lotr-3.webp" alt="Poster LOTR 3" width="60"></td>
+                        <td>The Lord of the Rings: The Return of the King</td>
+                        <td>2003</td>
+                        <td>Peter Jackson</td>
+                        <td>9.8/10</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/Hobbit-1.jfif" alt="Poster Hobbit 1" width="60"></td>
+                        <td>The Hobbit: An Unexpected Journey</td>
+                        <td>2012</td>
+                        <td>Peter Jackson</td>
+                        <td>9.0/10</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/Hobbit-2.webp" alt="Poster Hobbit 2" width="60"></td>
+                        <td>The Hobbit: The Desolation of Smaug</td>
+                        <td>2013</td>
+                        <td>Peter Jackson</td>
+                        <td>9.0/10</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/Hobbit-3.jfif" alt="Poster Hobbit 3" width="60"></td>
+                        <td>The Hobbit: The Battle of the Five Armies</td>
+                        <td>2014</td>
+                        <td>Peter Jackson</td>
+                        <td>9.0/10</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/Frankenstein.jpg" alt="Poster Frankenstein" width="60"></td>
+                        <td>Frankenstein</td>
+                        <td>2025</td>
+                        <td>Guillermo del Toro</td>
+                        <td>9.0/10</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/Pride & Prejudice.webp" alt="Poster Pride & Prejudice" width="60"></td>
+                        <td>Pride & Prejudice</td>
+                        <td>2005</td>
+                        <td>Joe Wright</td>
+                        <td>9.0/10</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/interstellar.webp" alt="Poster Interstellar" width="60"></td>
+                        <td>Interstellar</td>
+                        <td>2014</td>
+                        <td>Christopher Nolan</td>
+                        <td>9.5/10</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/12th_Fail.webp" alt="Poster 12th Fail" width="60"></td>
+                        <td>12th Fail</td>
+                        <td>2023</td>
+                        <td>Vidhu Vinod Chopra</td>
+                        <td>9.2/10</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="tambah-film">
+            <h2>Tambah Film</h2>
+            <form action="#" method="post">
+                <p>
+                    <label for="judul">Judul Film:</label><br>
+                    <input type="text" id="judul" name="judul" required>
+                </p>
+                <p>
+                    <label for="tahun">Tahun Rilis:</label><br>
+                    <input type="number" id="tahun" name="tahun" min="1900" max="2026" required>
+                </p>
+                <p>
+                    <label for="rating">Rating (1-10):</label><br>
+                    <input type="number" id="rating" name="rating" min="1" max="10" step="0.1" required>
+                </p>
+                <button type="submit">Simpan Film</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p id="tentang-saya">Balqis Quratu'ain Adibah - 25523178 - 2026</p>
+    </footer>
+
+</body>
+</html>
