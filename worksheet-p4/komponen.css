@@ -48,12 +48,13 @@ input[type="number"] {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   font-size: var(--text-md);
+  font-family: inherit;
   background-color: var(--color-surface);
   color: var(--color-fg);
 }
 
 /* E.3 Keadaan Fokus (Focus State) yang Jelas & Kontras untuk Aksesibilitas */
-input:focus, button:focus {
+input:focus, button:focus, a:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
   border-color: var(--color-focus);
@@ -67,11 +68,12 @@ input:user-invalid {
 /* E.4 Tombol Aksi (Button) */
 button[type="submit"] {
   background-color: var(--color-primary);
-  color: #FFFFFF;
+  color: var(--color-surface);
   padding: var(--space-2) var(--space-4);
   border: none;
   border-radius: var(--radius-md);
   font-size: var(--text-md);
+  font-family: inherit;
   cursor: pointer;
   font-weight: 500;
   transition: opacity 0.2s ease;
