@@ -62,3 +62,15 @@ Saya dibantu AI untuk:
 - Menyusun struktur CSS Mobile-First pada `responsif.css`.
 - Menyelesaikan perintah Git Bash untuk menyalin folder P5 ke P6 dan memperbagus riwayat commit/push.
 - Menangani kendala tabel meluber pada tampilan mobile 360 px.
+
+## Pertemuan 8 - JavaScript Modern ES6+, Struktur Data, dan Array Methods
+- Mengubah data static HTML menjadi variabel, objek, dan array di `js/app.js`
+- Menggunakan 2 fungsi murni (`buatPerkenalan` dan `formatKeahlian`)
+- Mengolah array of object film favorit memakai array methods: `map`, `filter`, dan `find`
+- Mencegah *side-effect* saat pengurutan (*sorting*) menggunakan spread operator `[...array]`
+
+### Deklarasi Catatan Penggunaan AI
+Saya dibantu AI untuk:
+- Merancang struktur data ES6+ dan contoh fungsi murni di `js/app.js`
+- Memahami konsep immutability pada array methods (`map`, `filter`, `find`, `sort`)
+- Menyelesaikan isu CORS policy dan pengisian lembar evaluasi Worksheet P8
