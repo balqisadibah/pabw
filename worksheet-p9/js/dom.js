@@ -37,3 +37,28 @@ function render(daftar) {
 
 // Jalankan render awal saat halaman pertama kali dimuat
 render(daftarFilm);
+
+
+// --- LEMBAR C: Event Delegation pada Tombol Filter ---
+const barisFilter = document.querySelector("#filter");
+
+if (barisFilter) {
+  barisFilter.addEventListener("click", (event) => {
+    // Mencari tombol terdekat yang diklik
+    const tombol = event.target.closest("button");
+    if (!tombol) return; // Jika yang diklik bukan tombol, abaikan
+
+    // Tandai tombol yang sedang aktif
+    document.querySelectorAll("#filter button").forEach((b) => b.classList.remove("aktif"));
+    tombol.classList.add("aktif");
+
+    // Menyaring data berdasarkan kategori tombol
+    const kategori = tombol.dataset.kategori;
+    const terpilih = daftarFilm.filter(
+      (film) => kategori === "semua" || film.kategori === kategori
+    );
+
+    // Render ulang daftar film yang sesuai
+    render(terpilih);
+  });
+}
