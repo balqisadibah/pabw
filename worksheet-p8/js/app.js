@@ -14,3 +14,17 @@ const profil = {
 const sapaan = `Nama saya ${profil.nama}, seorang ${profil.peran}.`;
 console.log(sapaan);
 console.log(`Jumlah keahlian: ${profil.keahlian?.length ?? 0}`);
+
+// --- LEMBAR C: Dua Fungsi Murni ---
+
+// 1. Fungsi Murni: Menyusun kalimat perkenalan
+function buatPerkenalan({ nama, peran }) {
+  return `Halo! Saya ${nama}, ${peran}. Selamat datang di portofolio saya!`;
+}
+
+// 2. Fungsi Murni (Arrow Function): Merapikan daftar keahlian
+const formatKeahlian = (daftar) => daftar.join(" · ");
+
+// Uji coba fungsi murni di Console
+console.log(buatPerkenalan(profil));
+console.log("Keahlian Utama:", formatKeahlian(profil.keahlian));
