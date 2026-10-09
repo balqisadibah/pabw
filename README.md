@@ -11,7 +11,7 @@ Kolom tabel: Judul, Tahun, Sutradara, Rating
 Kolom form: Judul, Tahun, Rating
 Gambar: film-1.webp
 
-## Catatan penggunaan AI
+### Catatan penggunaan AI
 - Dibantu AI: Menyusun struktur Markdown README.md, panduan langkah perintah Git, serta penyelesaian kendala pada terminal Git Bash.
 
 ## Pertemuan 4 - Design token halaman profil
@@ -30,7 +30,22 @@ Gambar: film-1.webp
 Kriteria selesai saya: mengubah --color-primary di satu baris harus mengubah warna tombol, tautan, judul, dan garis fokus. 
 
 ### Catatan penggunaan AI
-Saya dibantu AI (Claude) untuk: debugging masalah tema gelap yang tidak berfungsi
-(ternyata karena membuka file lewat file:// bukan server lokal), penjelasan konsep
-design token dan :has(), serta menyusun draf jawaban tiket keluar yang kemudian
-saya tulis ulang dengan pemahaman saya sendiri.
+Saya dibantu AI untuk: debugging masalah tema gelap yang tidak berfungsi (ternyata karena membuka file lewat file:// bukan server lokal), penjelasan konsep design token dan :has(), serta menyusun draf jawaban tiket keluar yang kemudian saya tulis ulang dengan pemahaman saya sendiri.
+
+## Pertemuan 5 - Layout Modern: Flexbox dan Grid
+- Berkas yang disesuaikan: layout.css, komponen.css
+- Penggunaan Grid: Kerangka halaman utama (3 baris) dan galeri kartu film adaptif
+- Penggunaan Flexbox: Header, navbar, dan struktur isi komponen kartu
+
+### Rencana Kerangka Halaman
+| Bagian halaman | Peran | Nilai yang saya pakai |
+|---|---|---|
+| Baris pertama | Kepala halaman: logo, judul, menu | auto |
+| Baris kedua | Isi konten | 1fr |
+| Baris ketiga | Kaki halaman | auto |
+
+### Catatan penggunaan AI
+Saya dibantu AI untuk:
+- Membantu penyusunan tahapan commit dan push Git secara bertahap.
+- Memperbaiki tata letak CSS pada `layout.css` agar tidak terjadi bentrokan/luberan antara section tabel film dan form input.
+- Menyusun penataan galeri kartu yang responsif menggunakan `repeat(auto-fit, minmax(16rem, 1fr))` tanpa media query.
