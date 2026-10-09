@@ -62,3 +62,61 @@ if (barisFilter) {
     render(terpilih);
   });
 }
+
+// --- LEMBAR D: Validasi Form Tanpa Reload ---
+const formFilm = document.querySelector("#form-film");
+const inputJudul = document.querySelector("#judul");
+const inputRating = document.querySelector("#rating");
+const errorJudul = document.querySelector("#error-judul");
+const errorRating = document.querySelector("#error-rating");
+
+if (formFilm) {
+  formFilm.addEventListener("submit", (event) => {
+    // 1. Hentikan reload halaman bawaan form
+    event.preventDefault();
+
+    let valid = true;
+    const judulVal = inputJudul.value.trim();
+    const ratingVal = Number(inputRating.value);
+
+    // 2. Validasi Kolom Judul
+    if (judulVal === "") {
+      errorJudul.style.display = "inline";
+      inputJudul.setAttribute("aria-invalid", "true");
+      valid = false;
+    } else {
+      errorJudul.style.display = "none";
+      inputJudul.removeAttribute("aria-invalid");
+    }
+
+    // 3. Validasi Kolom Rating (harus 1 - 10)
+    if (!ratingVal || ratingVal < 1 || ratingVal > 10) {
+      errorRating.style.display = "inline";
+      inputRating.setAttribute("aria-invalid", "true");
+      valid = false;
+    } else {
+      errorRating.style.display = "none";
+      inputRating.removeAttribute("aria-invalid");
+    }
+
+    // 4. Jika validasi lolos, tambahkan film ke array dan render ulang
+    if (valid) {
+      const inputTahun = document.querySelector("#tahun");
+      const tahunVal = inputTahun ? Number(inputTahun.value) || 2026 : 2026;
+
+      daftarFilm.push({
+        judul: judulVal,
+        tahun: tahunVal,
+        sutradara: "Anonim",
+        rating: ratingVal,
+        kategori: "lainnya"
+      });
+
+      // Render ulang daftar film dengan data terbaru
+      render(daftarFilm);
+
+      // Reset isian form
+      formFilm.reset();
+    }
+  });
+}
