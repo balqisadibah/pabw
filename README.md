@@ -27,4 +27,10 @@ Gambar: film-1.webp
 | --radius-md | 0.5rem | sudut tombol dan kartu |
 | --space-4 | 1rem | jarak standar antar elemen |
 
-Kriteria selesai saya: mengubah --color-primary di satu baris harus mengubah warna tombol, tautan, judul, dan garis fokus.
+Kriteria selesai saya: mengubah --color-primary di satu baris harus mengubah warna tombol, tautan, judul, dan garis fokus. 
+
+### Catatan penggunaan AI
+Saya dibantu AI (Claude) untuk: debugging masalah tema gelap yang tidak berfungsi
+(ternyata karena membuka file lewat file:// bukan server lokal), penjelasan konsep
+design token dan :has(), serta menyusun draf jawaban tiket keluar yang kemudian
+saya tulis ulang dengan pemahaman saya sendiri.

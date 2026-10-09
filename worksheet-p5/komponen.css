@@ -1,3 +1,49 @@
+/* ===================================
+   komponen.css — Komponen, Galeri Adaptive, dan Kartu
+   =================================== */
+
+/* C.1 Galeri Kartu Adaptif dengan Grid auto-fit (Tanpa Media Query) */
+.katalog, .card-container, .grid-kartu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-4);
+  align-content: start;
+}
+
+/* D.1 Span untuk Elemen Sorotan */
+.sorotan {
+  grid-column: span 2;
+}
+
+/* C.2 Tampilan Kartu Film (Flexbox di Dalam Kartu) */
+.kartu {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--card-pad);
+  box-shadow: var(--shadow-1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0; /* E.2 Mencegah Overflow */
+}
+
+.kartu__isi {
+  min-width: 0;
+}
+
+.kartu__judul {
+  overflow-wrap: anywhere; /* E.2 Teks Panjang Membungkus Rapi */
+}
+
+.kartu__kaki {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
 /* E.1 Tampilan Tabel Katalog Film */
 table {
   width: 100%;
@@ -5,7 +51,8 @@ table {
   margin-top: var(--space-2);
   background-color: var(--color-surface);
   border-radius: var(--radius-md);
-  overflow: hidden;
+  overflow-x: auto;
+  display: block; /* Agar tabel tidak memutus layar saat di tampilan mobile (360px) */
   box-shadow: var(--shadow-1);
 }
 
@@ -53,19 +100,18 @@ input[type="number"] {
   color: var(--color-fg);
 }
 
-/* E.3 Keadaan Fokus (Focus State) yang Jelas & Kontras untuk Aksesibilitas */
+/* Keadaan Fokus & Aksesibilitas */
 input:focus, button:focus, a:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
   border-color: var(--color-focus);
 }
 
-/* Keadaan Tidak Valid (Invalid State) */
 input:user-invalid {
   border-color: var(--color-danger);
 }
 
-/* E.4 Tombol Aksi (Button) */
+/* Tombol Submit */
 button[type="submit"] {
   background-color: var(--color-primary);
   color: var(--color-surface);
