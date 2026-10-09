@@ -49,3 +49,16 @@ Saya dibantu AI untuk:
 - Membantu penyusunan tahapan commit dan push Git secara bertahap.
 - Memperbaiki tata letak CSS pada `layout.css` agar tidak terjadi bentrokan/luberan antara section tabel film dan form input.
 - Menyusun penataan galeri kartu yang responsif menggunakan `repeat(auto-fit, minmax(16rem, 1fr))` tanpa media query.
+
+
+## Pertemuan 6 - Responsif Mobile-First
+- Berkas baru: responsif.css
+- Strategi: Mobile-First (Gaya dasar tanpa media query untuk layar sempit)
+- Titik Henti: 48rem (Tablet - 2 kolom) dan 60rem (Desktop - 3 kolom + sidebar bersanding)
+- Penanganan Media: Gambar dengan `max-width: 100%` dan tabel data dalam wadah `.table-wrap` (`overflow-x: auto`)
+
+### Catatan penggunaan AI
+Saya dibantu AI untuk:
+- Menyusun struktur CSS Mobile-First pada `responsif.css`.
+- Menyelesaikan perintah Git Bash untuk menyalin folder P5 ke P6 dan memperbagus riwayat commit/push.
+- Menangani kendala tabel meluber pada tampilan mobile 360 px.
