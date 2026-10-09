@@ -1,0 +1,50 @@
+/* ===================================
+   responsif.css — Gaya Responsif Mobile-First
+   =================================== */
+
+/* B.1 Dasar (Mobile-First): Berlaku di semua lebar layar tanpa media query */
+.content, .isi {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.grid, .katalog, .grid-kartu {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+/* D.1 Penyesuaian Media, Gambar, dan Tabel */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  width: 100%;
+}
+
+p {
+  font-size: var(--text-md, 1rem);
+  line-height: 1.6;
+}
+
+/* C.1 Titik Henti 1: Tablet (min-width: 48rem / 768px) */
+@media (min-width: 48rem) {
+  .grid, .katalog, .grid-kartu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* C.1 Titik Henti 2: Desktop (min-width: 60rem / 960px) */
+@media (min-width: 60rem) {
+  .content, .isi {
+    grid-template-columns: 16rem 1fr;
+  }
+  
+  .grid, .katalog, .grid-kartu {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
