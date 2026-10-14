@@ -32,16 +32,19 @@
             <h2>Daftar Film</h2>
             
             <!-- Tombol Filter Kategori -->
-            <div id="filter" style="margin-bottom: 1rem;">
+            <div id="filter" class="baris-filter">
                 <button data-kategori="semua" class="aktif">Semua</button>
                 <button data-kategori="lotr">LOTR</button>
                 <button data-kategori="hobbit">Hobbit</button>
                 <button data-kategori="lainnya">Lainnya</button>
             </div>
 
+            <!-- Elemen Status untuk Memuat / Galat -->
+            <p id="status" role="status"></p>
+
             <!-- Wadah Daftar Film dari JS -->
             <ul id="daftar" class="grid-kartu"></ul>
-            <p id="pesan-kosong" hidden>Tidak ada proyek pada kategori itu.</p>
+            <p id="pesan-kosong" hidden>Tidak ada film pada kategori ini.</p>
         </section>
 
         <section id="tambah-film">

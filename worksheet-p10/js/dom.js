@@ -1,13 +1,12 @@
-/* =========================================================
-   P10 — JavaScript Asinkron, fetch, Promise, dan JSON
-   ========================================================= */
-
-import { daftarFilm } from "./app.js";
-import { ambilProyek } from "./api.js";
+// js/dom.js
+import { ambilFilm } from "./api.js";
 
 // --- Seleksi Elemen ---
 const wadah = document.querySelector("#daftar");
 const kosong = document.querySelector("#pesan-kosong");
+const statusPesan = document.querySelector("#status");
+
+let semuaFilm = [];
 
 // Fungsi murni untuk membuat 1 elemen kartu <li>
 function buatKartu(item) {
@@ -37,18 +36,23 @@ function render(daftar) {
 
 // --- Menangani Pengambilan Data Asinkron & Penanganan Galat ---
 async function muatDataAwal() {
-  // 1. Keadaan Memuat (Loading)
-  wadah.innerHTML = "<p>Sedang memuat data dari jaringan...</p>";
+  statusPesan.textContent = "Sedang memuat data...";
   kosong.hidden = true;
 
   try {
-    // Mengambil data dari API eksternal
-    const dataApi = await ambilProyek();
-    render(dataApi);
+    const dataApi = await ambilFilm();
+    
+    // Membaca data tambahan dari localStorage menggunakan JSON.parse
+    const dataLokalSimpan = localStorage.getItem("film_tambah");
+    const filmTambahan = dataLokalSimpan ? JSON.parse(dataLokalSimpan) : [];
+    
+    semuaFilm = [...dataApi, ...filmTambahan];
+    
+    statusPesan.textContent = "";
+    render(semuaFilm);
   } catch (galat) {
-    // 2. Keadaan Gagal / Galat (Fallback ke data lokal)
-    wadah.innerHTML = `<p style="color: var(--color-danger);">Gagal memuat data: ${galat.message}. Menampilkan data lokal.</p>`;
-    render(daftarFilm);
+    statusPesan.textContent = "Gagal memuat data: " + galat.message;
+    kosong.hidden = true;
   }
 }
 
@@ -67,7 +71,7 @@ if (barisFilter) {
     tombol.classList.add("aktif");
 
     const kategori = tombol.dataset.kategori;
-    const terpilih = daftarFilm.filter(
+    const terpilih = semuaFilm.filter(
       (film) => kategori === "semua" || film.kategori === kategori
     );
 
@@ -91,20 +95,20 @@ if (formFilm) {
     const ratingVal = Number(inputRating.value);
 
     if (judulVal === "") {
-      errorJudul.style.display = "inline";
+      errorJudul.hidden = false;
       inputJudul.setAttribute("aria-invalid", "true");
       valid = false;
     } else {
-      errorJudul.style.display = "none";
+      errorJudul.hidden = true;
       inputJudul.removeAttribute("aria-invalid");
     }
 
     if (!ratingVal || ratingVal < 1 || ratingVal > 10) {
-      errorRating.style.display = "inline";
+      errorRating.hidden = false;
       inputRating.setAttribute("aria-invalid", "true");
       valid = false;
     } else {
-      errorRating.style.display = "none";
+      errorRating.hidden = true;
       inputRating.removeAttribute("aria-invalid");
     }
 
@@ -112,15 +116,22 @@ if (formFilm) {
       const inputTahun = document.querySelector("#tahun");
       const tahunVal = inputTahun ? Number(inputTahun.value) || 2026 : 2026;
 
-      daftarFilm.push({
+      const filmBaru = {
         judul: judulVal,
         tahun: tahunVal,
-        sutradara: "Anonim",
         rating: ratingVal,
         kategori: "lainnya"
-      });
+      };
 
-      render(daftarFilm);
+      semuaFilm.push(filmBaru);
+
+      // Menyimpan data ke localStorage menggunakan JSON.stringify
+      const dataLokalSimpan = localStorage.getItem("film_tambah");
+      const filmTambahan = dataLokalSimpan ? JSON.parse(dataLokalSimpan) : [];
+      filmTambahan.push(filmBaru);
+      localStorage.setItem("film_tambah", JSON.stringify(filmTambahan));
+
+      render(semuaFilm);
       formFilm.reset();
     }
   });

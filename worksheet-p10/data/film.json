@@ -1,0 +1,32 @@
+[
+  {
+    "judul": "The Lord of the Rings: The Fellowship of the Ring",
+    "tahun": 2001,
+    "rating": 8.8,
+    "kategori": "lotr"
+  },
+  {
+    "judul": "The Lord of the Rings: The Two Towers",
+    "tahun": 2002,
+    "rating": 8.7,
+    "kategori": "lotr"
+  },
+  {
+    "judul": "The Lord of the Rings: The Return of the King",
+    "tahun": 2003,
+    "rating": 9.0,
+    "kategori": "lotr"
+  },
+  {
+    "judul": "The Hobbit: An Unexpected Journey",
+    "tahun": 2012,
+    "rating": 7.8,
+    "kategori": "hobbit"
+  },
+  {
+    "judul": "The Hobbit: The Desolation of Smaug",
+    "tahun": 2013,
+    "rating": 7.9,
+    "kategori": "hobbit"
+  }
+]
