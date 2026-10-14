@@ -74,3 +74,14 @@ Saya dibantu AI untuk:
 - Merancang struktur data ES6+ dan contoh fungsi murni di `js/app.js`
 - Memahami konsep immutability pada array methods (`map`, `filter`, `find`, `sort`)
 - Menyelesaikan isu CORS policy dan pengisian lembar evaluasi Worksheet P8
+
+## Pertemuan 10 - JavaScript Asinkron, fetch, Promise, dan JSON
+- Berkas baru/modifikasi: `js/api.js` (untuk pengambilan data asinkron publik) dan pembaruan pada `js/dom.js` (integrasi `async/await`, `try-catch`, serta penanganan galat dan *fallback* data lokal).
+- Memanfaatkan fungsi `fetch()` untuk meminta data dari jaringan serta melakukan pemeriksaan `response.ok` sebelum memproses data JSON.
+- Menyiapkan berbagai keadaan antarmuka (*interface states*): keadaan memuat (*loading*), berhasil (*success*), galat (*error*), dan kosong (*empty*).
+
+### Catatan penggunaan AI
+Saya dibantu AI untuk:
+- Merancang struktur modular pada `js/api.js` dan logika asinkron di `js/dom.js`.
+- Menyesuaikan *mapping* data API eksternal agar selaras dengan format data kartu film.
+- Menyusun riwayat commit dan push secara bertahap menggunakan Git Bash.
