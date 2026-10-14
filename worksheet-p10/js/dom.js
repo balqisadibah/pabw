@@ -1,69 +1,81 @@
 /* =========================================================
-   P9 — DOM, Event Delegation, dan Interaktivitas
+   P10 — JavaScript Asinkron, fetch, Promise, dan JSON
    ========================================================= */
 
-// Mengimpor data daftarFilm dari app.js
 import { daftarFilm } from "./app.js";
+import { ambilProyek } from "./api.js";
 
-// --- LEMBAR A: Seleksi Elemen ---
+// --- Seleksi Elemen ---
 const wadah = document.querySelector("#daftar");
 const kosong = document.querySelector("#pesan-kosong");
 
-// --- LEMBAR B: Menyusun Elemen Kartu dari Data ---
-
 // Fungsi murni untuk membuat 1 elemen kartu <li>
-function buatKartu(film) {
+function buatKartu(item) {
   const li = document.createElement("li");
   li.className = "kartu";
-  li.textContent = `${film.judul} (${film.tahun}) — Rating: ${film.rating}`;
+  
+  const judul = item.judul || item.title || "Judul Tidak Tersedia";
+  const tahun = item.tahun || 2026;
+  const rating = item.rating || "N/A";
+  
+  li.textContent = `${judul} (${tahun}) — Rating: ${rating}`;
   return li;
 }
 
 // Fungsi render untuk menampilkan seluruh data ke halaman
 function render(daftar) {
-  // 1. Kosongkan wadah terlebih dahulu agar kartu tidak berlipat ganda
   wadah.textContent = "";
 
-  // 2. Jika data kosong, tampilkan pesan kosong
   if (daftar.length === 0) {
     kosong.hidden = false;
     return;
   }
 
-  // 3. Jika ada data, sembunyikan pesan kosong & tampilkan kartu
   kosong.hidden = true;
-  daftar.forEach((film) => wadah.append(buatKartu(film)));
+  daftar.forEach((item) => wadah.append(buatKartu(item)));
 }
 
-// Jalankan render awal saat halaman pertama kali dimuat
-render(daftarFilm);
+// --- Menangani Pengambilan Data Asinkron & Penanganan Galat ---
+async function muatDataAwal() {
+  // 1. Keadaan Memuat (Loading)
+  wadah.innerHTML = "<p>Sedang memuat data dari jaringan...</p>";
+  kosong.hidden = true;
 
+  try {
+    // Mengambil data dari API eksternal
+    const dataApi = await ambilProyek();
+    render(dataApi);
+  } catch (galat) {
+    // 2. Keadaan Gagal / Galat (Fallback ke data lokal)
+    wadah.innerHTML = `<p style="color: var(--color-danger);">Gagal memuat data: ${galat.message}. Menampilkan data lokal.</p>`;
+    render(daftarFilm);
+  }
+}
 
-// --- LEMBAR C: Event Delegation pada Tombol Filter ---
+// Jalankan pemuatan data asinkron saat halaman dimuat
+muatDataAwal();
+
+// --- Event Delegation pada Tombol Filter ---
 const barisFilter = document.querySelector("#filter");
 
 if (barisFilter) {
   barisFilter.addEventListener("click", (event) => {
-    // Mencari tombol terdekat yang diklik
     const tombol = event.target.closest("button");
-    if (!tombol) return; // Jika yang diklik bukan tombol, abaikan
+    if (!tombol) return;
 
-    // Tandai tombol yang sedang aktif
     document.querySelectorAll("#filter button").forEach((b) => b.classList.remove("aktif"));
     tombol.classList.add("aktif");
 
-    // Menyaring data berdasarkan kategori tombol
     const kategori = tombol.dataset.kategori;
     const terpilih = daftarFilm.filter(
       (film) => kategori === "semua" || film.kategori === kategori
     );
 
-    // Render ulang daftar film yang sesuai
     render(terpilih);
   });
 }
 
-// --- LEMBAR D: Validasi Form Tanpa Reload ---
+// --- Validasi Form Tanpa Reload ---
 const formFilm = document.querySelector("#form-film");
 const inputJudul = document.querySelector("#judul");
 const inputRating = document.querySelector("#rating");
@@ -72,14 +84,12 @@ const errorRating = document.querySelector("#error-rating");
 
 if (formFilm) {
   formFilm.addEventListener("submit", (event) => {
-    // 1. Hentikan reload halaman bawaan form
     event.preventDefault();
 
     let valid = true;
     const judulVal = inputJudul.value.trim();
     const ratingVal = Number(inputRating.value);
 
-    // 2. Validasi Kolom Judul
     if (judulVal === "") {
       errorJudul.style.display = "inline";
       inputJudul.setAttribute("aria-invalid", "true");
@@ -89,7 +99,6 @@ if (formFilm) {
       inputJudul.removeAttribute("aria-invalid");
     }
 
-    // 3. Validasi Kolom Rating (harus 1 - 10)
     if (!ratingVal || ratingVal < 1 || ratingVal > 10) {
       errorRating.style.display = "inline";
       inputRating.setAttribute("aria-invalid", "true");
@@ -99,7 +108,6 @@ if (formFilm) {
       inputRating.removeAttribute("aria-invalid");
     }
 
-    // 4. Jika validasi lolos, tambahkan film ke array dan render ulang
     if (valid) {
       const inputTahun = document.querySelector("#tahun");
       const tahunVal = inputTahun ? Number(inputTahun.value) || 2026 : 2026;
@@ -112,10 +120,7 @@ if (formFilm) {
         kategori: "lainnya"
       });
 
-      // Render ulang daftar film dengan data terbaru
       render(daftarFilm);
-
-      // Reset isian form
       formFilm.reset();
     }
   });
