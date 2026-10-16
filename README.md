@@ -85,3 +85,14 @@ Saya dibantu AI untuk:
 - Merancang struktur modular pada `js/api.js` dan logika asinkron di `js/dom.js`.
 - Menyesuaikan *mapping* data API eksternal agar selaras dengan format data kartu film.
 - Menyusun riwayat commit dan push secara bertahap menggunakan Git Bash.
+
+## Pertemuan 11 - Modul, State, dan Penyimpanan Klien
+- Berkas modul baru yang dibuat: `data.js`, `state.js`, `dom.js`, `events.js`, dan `app.js`.
+- Menerapkan arsitektur modular ES6 dengan jalur impor berawalan `./` dan berakhiran `.js`.
+- Mengimplementasikan penyimpanan state terpusat dan persistensi `localStorage` menggunakan strategi versi (`KUNCI`: `"pabw-p11"`, `VERSI`: 2) serta penanganan galat menggunakan blok `try...catch` agar aplikasi aman dari data korup atau tidak valid.
+
+### Catatan Penggunaan AI
+Saya dibantu AI untuk:
+- Merancang struktur pemisahan modul JavaScript (`data.js`, `state.js`, `dom.js`, `events.js`, dan `app.js`).
+- Menyusun fungsi penanganan galat (*error handling*) pada `state.js` dan simulasi pengujian ketahanan (*robustness*) melalui *Console* peramban.
+- Menyelesaikan pengisian tabel worksheet serta menyusun riwayat *commit* dan *push* Git.
