@@ -22,6 +22,9 @@ export function muatState() {
   }
 }
 
+// Daftarkan ke window agar bisa diuji via console
+window.muatState = muatState;
+
 // Muat pilihan kategori terakhir jika tersimpan di localStorage
 const tersimpan = muatState();
 if (tersimpan?.kategoriAktif) {
