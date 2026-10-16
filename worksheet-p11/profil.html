@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Film Favorit Saya</title>
+
+    <link rel="stylesheet" href="tokens.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="komponen.css">
+    <link rel="stylesheet" href="tema.css">
+    <link rel="stylesheet" href="responsif.css">
+</head>
+<body>
+
+    <header>
+        <input type="checkbox" id="tema" class="pengalih-tema">
+        <label for="tema" class="theme-toggle">Tema gelap</label>   
+        <h1>Daftar Film Favorit Saya</h1>
+        <nav aria-label="Navigasi utama">
+            <ul>
+                <li><a href="#daftar-film">Daftar Film</a></li>
+                <li><a href="#tambah-film">Tambah Film</a></li>
+                <li><a href="#tentang-saya">Tentang Saya</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="daftar-film">
+            <h2>Daftar Film</h2>
+            
+            <!-- Tombol Filter Kategori -->
+            <div id="filter" class="baris-filter">
+                <button data-kategori="semua" class="aktif">Semua</button>
+                <button data-kategori="lotr">LOTR</button>
+                <button data-kategori="hobbit">Hobbit</button>
+                <button data-kategori="lainnya">Lainnya</button>
+            </div>
+
+            <!-- Elemen Status untuk Memuat / Galat -->
+            <p id="status" role="status"></p>
+
+            <!-- Wadah Daftar Film dari JS -->
+            <ul id="daftar" class="grid-kartu"></ul>
+            <p id="pesan-kosong" hidden>Tidak ada film pada kategori ini.</p>
+        </section>
+
+        <section id="tambah-film">
+            <h2>Tambah Film</h2>
+            <form id="form-film" action="#" method="post" novalidate>
+                <p>
+                    <label for="judul">Judul Film:</label><br>
+                    <input type="text" id="judul" name="judul" required>
+                    <span class="pesan-error" id="error-judul" style="color: var(--color-danger); display: none;">Judul wajib diisi.</span>
+                </p>
+                <p>
+                    <label for="tahun">Tahun Rilis:</label><br>
+                    <input type="number" id="tahun" name="tahun" min="1900" max="2026" required>
+                </p>
+                <p>
+                    <label for="rating">Rating (1-10):</label><br>
+                    <input type="number" id="rating" name="rating" min="1" max="10" step="0.1" required>
+                    <span class="pesan-error" id="error-rating" style="color: var(--color-danger); display: none;">Rating harus angka 1 - 10.</span>
+                </p>
+                <button type="submit" id="btn-submit">Simpan Film</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p id="tentang-saya">Balqis Quratu'ain Adibah - 25523178 - 2026</p>
+    </footer>
+
+    <!-- Skrip Module -->
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/dom.js"></script>
+</body>
+</html>
